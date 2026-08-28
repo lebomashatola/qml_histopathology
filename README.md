@@ -35,6 +35,7 @@ It is recommended to run each project inside a dedicated Conda environment to av
 The preprocessing step that shows the computing of cell and tissue graphs as well as assignment matrices for HactNet model training
 
 ```bash
+  # Create and activate environment
    conda create -n histopathology python=3.10 -y
    conda activate histopathology
 
