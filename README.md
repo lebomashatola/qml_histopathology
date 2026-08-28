@@ -3,10 +3,10 @@
 This project implements a hybrid **Quantum Machine Learning (QML) and Classical Machine Learning benchmark** for histopathology image classification. It builds cell- and tissue-level graphs using the Histocartography library and evaluates classification performance across classical and quantum models (including local simulators and actual IBM Quantum hardware).
 
 <p align="center">   
-  <img src="images/1.png" alt="Project Workflow Overview" width="700"> 
+  <img src="images/2.png" alt="Project Workflow Overview" width="700"> 
 </p>   
 <p align="center">   
-  <img src="images/2.png" alt="Project Workflow Overview" width="700"> 
+  <img src="images/1.png" alt="Project Workflow Overview" width="700"> 
 </p>
 
 
