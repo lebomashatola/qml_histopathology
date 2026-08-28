@@ -29,6 +29,21 @@ git clone
    PANNUKE_MODEL = "/path/to/your/saved/pannuke.pt"
    ```
 
+It is recommended to run each project inside a dedicated Conda environment to avoid dependency conflicts.
+### 1. Histopathology image preprocessing
+
+The preprocessing step that shows the computing of cell and tissue graphs as well as assignment matrices for HactNet model training
+
+```bash
+   conda create -n histopathology python=3.10 -y
+   conda activate histopathology
+```
+
+# Install dependencies from the repository root
+   ```bash
+   pip install -r notebooks/requirements.txt
+   ```
+
 ### 2. QML & Classical Benchmark Setup
 The main benchmarking framework processes generated embedding CSV files.
 
