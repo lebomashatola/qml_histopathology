@@ -37,10 +37,7 @@ The preprocessing step that shows the computing of cell and tissue graphs as wel
 ```bash
    conda create -n histopathology python=3.10 -y
    conda activate histopathology
-```
-
-# Install dependencies from the repository root
-   ```bash
+  # Install dependencies from the repository root
    pip install -r notebooks/requirements.txt
    ```
 
