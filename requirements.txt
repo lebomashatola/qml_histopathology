@@ -1,0 +1,18 @@
+# Core
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+PyYAML
+
+# Quantum machine learning
+qiskit==2.5.2
+qiskit-machine-learning==0.9.1
+qiskit-aer
+
+# IBM Quantum hardware
+qiskit-ibm-runtime
+
+# Circuit visualization
+pylatexenc
