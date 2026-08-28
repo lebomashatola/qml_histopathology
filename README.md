@@ -12,18 +12,13 @@ This project implements a hybrid **Quantum Machine Learning (QML) and Classical 
 
 ## Getting Started
 
-This repository contains two distinct pipelines. **Keep these in separate Conda environments** to avoid dependency conflicts.
+### 📥 Installation & Setup
 
-### 1. Preprocessing Pipeline Setup
-The preprocessing tutorial notebook handles nuclear detection, tissue graphing, and data preparation.
+To get a local copy of this project up and running, open your terminal and run the following commands:
 
 ```bash
-# Create and activate environment
-conda create -n histopathology python=3.10 -y
-conda activate histopathology
-
-# Install dependencies from the repository root
-pip install -r notebooks/requirements.txt
+# Clone the repository via HTTPS
+git clone 
 ```
 
 **Model Requirement:**
