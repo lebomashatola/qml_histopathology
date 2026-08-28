@@ -1,0 +1,17 @@
+numpy==1.26.4
+scipy
+pandas
+matplotlib
+seaborn
+Pillow
+scikit-image==0.19.3
+h5py
+opencv-python==4.8.1.78
+torch==2.2.2
+torchvision==0.17.2
+torchaudio==2.2.2
+torchdata==0.7.1
+dgl==2.1.0
+histocartography==0.1.4
+PyYAML
+pydantic

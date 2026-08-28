@@ -1,0 +1,21 @@
+Execution: ideal
+Qubits: 10
+Feature map: ZZFeatureMap
+Ansatz: efficient_su2
+Optimizer: COBYLA
+
+Train F1: 0.3750
+Validation F1: 0.6667
+Test F1: 0.5714
+
+Test Classification Report
+===========================
+
+              precision    recall  f1-score   support
+
+           N       0.50      0.33      0.40         3
+    UDH / PB       0.50      0.67      0.57         3
+
+    accuracy                           0.50         6
+   macro avg       0.50      0.50      0.49         6
+weighted avg       0.50      0.50      0.49         6

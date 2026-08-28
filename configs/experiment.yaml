@@ -1,0 +1,71 @@
+# ============================================================
+# DATA
+# ============================================================
+
+data_dir: "../data/hact_embeddings"
+
+train_file: "train.csv"
+val_file: "val.csv"
+test_file: "test.csv"
+
+
+# ============================================================
+# RESULTS
+# ============================================================
+
+results_dir: "../results"
+
+
+# ============================================================
+# QUANTUM MACHINE LEARNING
+# ============================================================
+
+quantum:
+
+  # ideal, noisy, hardware
+  mode: "ideal"
+
+  # efficient_su2 or two_local
+  ansatz: "efficient_su2"
+  ansatz_reps: 2
+
+  # COBYLA or SPSA
+  optimizer: "COBYLA"
+
+  maxiter: 30
+  shots: 1024
+
+  # IBM Quantum configuration
+  ibm_config: "~/.ibm_quantum.json"
+
+# ============================================================
+# CLASSICAL BENCHMARK
+# ============================================================
+
+classical:
+
+  # Keep this simple: three models
+  models:
+    - "logistic_regression"
+    - "random_forest"
+    - "mlp"
+
+  mlp:
+    hidden_layer_sizes: [64, 32]
+    max_iter: 100
+    random_state: 42
+
+  random_forest:
+    n_estimators: 100
+    random_state: 42
+
+  logistic_regression:
+    max_iter: 1000
+    random_state: 42
+
+
+# ============================================================
+# GENERAL
+# ============================================================
+
+random_state: 42
