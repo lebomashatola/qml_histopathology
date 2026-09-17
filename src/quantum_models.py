@@ -22,9 +22,7 @@ _BASE_DIR = Path(__file__).resolve().parent.parent
 
 def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
 
-    # ============================================================
     # CONFIG
-    # ============================================================
 
     qcfg = config["quantum"]
 
@@ -38,17 +36,13 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
 
     results_dir = Path(results_dir)
 
-    # ============================================================
     # DIRECTORIES
-    # ============================================================
 
     for directory in ["pca", "loss", "circuits", "classification"]:
         (results_dir / directory).mkdir(parents=True, exist_ok=True)
 
 
-    # ============================================================
     # FEATURES AND LABELS
-    # ============================================================
 
     X_train = train[embedding_columns].values
     y_train = train["label"].values
@@ -69,9 +63,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
     )
 
 
-    # ============================================================
-    # PCA
-    # ============================================================
+    # PCA PLOTS
 
     X_all = np.concatenate([X_train, X_val, X_test])
     y_all = np.concatenate([y_train, y_val, y_test])
@@ -92,9 +84,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
     plt.close()
 
 
-    # ============================================================
     # SCALE EMBEDDINGS
-    # ============================================================
 
     scaler = MinMaxScaler(feature_range=(0, np.pi))
     X_train = scaler.fit_transform(X_train)
@@ -102,9 +92,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
     X_test  = scaler.transform(X_test)
 
 
-    # ============================================================
     # ZZ FEATURE MAP
-    # ============================================================
 
     feature_map = zz_feature_map(
         feature_dimension=N_QUBITS,
@@ -112,9 +100,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
     )
 
 
-    # ============================================================
     # ANSATZ
-    # ============================================================
 
     if ANSATZ == "efficient_su2":
 
@@ -139,9 +125,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
         )
 
 
-    # ============================================================
     # OPTIMIZER
-    # ============================================================
 
     if OPTIMIZER == "COBYLA":
 
@@ -158,9 +142,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
         )
 
 
-    # ============================================================
     # CIRCUIT — save diagram
-    # ============================================================
 
     circuit = feature_map.compose(ansatz)
 
@@ -173,9 +155,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
         pass
 
 
-    # ============================================================
     # EXECUTION BACKEND
-    # ============================================================
 
     pass_manager = None
 
@@ -233,9 +213,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
         )
 
 
-    # ============================================================
     # VQC
-    # ============================================================
 
     loss_history = []
 
@@ -257,9 +235,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
     vqc.fit(X_train, y_train)
 
 
-    # ============================================================
     # PREDICTIONS & SCORES
-    # ============================================================
 
     y_train_pred = vqc.predict(X_train)
     y_val_pred   = vqc.predict(X_val)
@@ -270,9 +246,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
     test_f1  = f1_score(y_test,  y_test_pred)
 
 
-    # ============================================================
     # CLASSIFICATION REPORT
-    # ============================================================
 
     report = classification_report(
         y_test,
@@ -296,9 +270,7 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
         f.write(report)
 
 
-    # ============================================================
     # LOSS PLOT
-    # ============================================================
 
     plt.figure(figsize=(8, 5))
     plt.plot(loss_history)
@@ -310,10 +282,6 @@ def run_quantum_model(train, val, test, embedding_columns, config, results_dir):
     plt.savefig(results_dir / "loss" / f"{MODE}_{ANSATZ}_{OPTIMIZER}_training_loss.png", dpi=300)
     plt.close()
 
-
-    # ============================================================
-    # RESULT
-    # ============================================================
 
     print(
         f"Train F1: {train_f1:.4f} | "
