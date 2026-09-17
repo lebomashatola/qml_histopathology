@@ -6,9 +6,7 @@ import pandas as pd
 import yaml
 
 
-# ============================================================
 # PROJECT PATH
-# ============================================================
 
 BASE_DIR = Path(__file__).resolve().parent
 SRC_DIR = BASE_DIR / "src"
@@ -19,25 +17,19 @@ from quantum_models import run_quantum_model
 from classical_models import run_classical_benchmark
 
 
-# ============================================================
 # CONFIG
-# ============================================================
 
 with open(BASE_DIR / "configs" / "experiment.yaml") as file:
     config = yaml.safe_load(file)
 
 
-# ============================================================
 # PATHS
-# ============================================================
 
 results_dir = BASE_DIR / "results"
 results_dir.mkdir(parents=True, exist_ok=True)
 
 
-# ============================================================
 # LOAD & NORMALISE EMBEDDINGS
-# ============================================================
 
 data_cfg = config["data"]
 source = data_cfg["source"]          # "hact" or "full"
@@ -88,9 +80,7 @@ print(f"Test: {len(test)}")
 print(f"Embedding dimensions: {len(embedding_columns)}")
 
 
-# ============================================================
 # QUANTUM
-# ============================================================
 
 print("\nRunning quantum model...")
 
@@ -104,9 +94,7 @@ run_quantum_model(
 )
 
 
-# ============================================================
 # CLASSICAL
-# ============================================================
 
 print("\nRunning classical benchmark...")
 
@@ -120,4 +108,4 @@ run_classical_benchmark(
 )
 
 
-print("\nDone.")
+print("\nRuns Complete.")
