@@ -2,11 +2,13 @@
 # DATA
 # ============================================================
 
-data_dir: "../data/hact_embeddings"
+data:
 
-train_file: "train.csv"
-val_file: "val.csv"
-test_file: "test.csv"
+  # "hact" or "full"
+  source: "hact"
+
+  # Only used when source is "full": 10, 32, or 64
+  dimensions: 10
 
 
 # ============================================================
@@ -23,7 +25,7 @@ results_dir: "../results"
 quantum:
 
   # ideal, noisy, hardware
-  mode: "ideal"
+  mode: "hardware"
 
   # efficient_su2 or two_local
   ansatz: "efficient_su2"
@@ -36,7 +38,7 @@ quantum:
   shots: 1024
 
   # IBM Quantum configuration
-  ibm_config: "~/.ibm_quantum.json"
+  ibm_config: "configs/credentials.json"
 
 # ============================================================
 # CLASSICAL BENCHMARK
