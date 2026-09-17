@@ -22,9 +22,7 @@ def run_classical_benchmark(train, val, test, embedding_columns, config, results
     loss_dir.mkdir(parents=True, exist_ok=True)
 
 
-    # ============================================================
     # FEATURES AND LABELS
-    # ============================================================
 
     X_train = train[embedding_columns].values
     X_val   = val[embedding_columns].values
@@ -44,9 +42,7 @@ def run_classical_benchmark(train, val, test, embedding_columns, config, results
     print(f"Test samples: {len(X_test)}")
 
 
-    # ============================================================
     # STANDARDIZE
-    # ============================================================
 
     scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
@@ -54,9 +50,7 @@ def run_classical_benchmark(train, val, test, embedding_columns, config, results
     X_test  = scaler.transform(X_test)
 
 
-    # ============================================================
-    # MODELS
-    # ============================================================
+    # LOAD MODELS
 
     ccfg = config.get("classical", {})
 
@@ -84,9 +78,7 @@ def run_classical_benchmark(train, val, test, embedding_columns, config, results
     }
 
 
-    # ============================================================
     # TRAIN MODELS
-    # ============================================================
 
     for name, model in models.items():
 
@@ -137,9 +129,7 @@ def run_classical_benchmark(train, val, test, embedding_columns, config, results
             plt.close()
 
 
-    # ============================================================
     # AGGREGATE F1 BAR CHART
-    # ============================================================
 
     report_files = sorted(
         glob.glob(str(classification_dir / "*.txt"))
@@ -193,10 +183,6 @@ def run_classical_benchmark(train, val, test, embedding_columns, config, results
     plt.savefig(results_dir / "classical_f1_scores.png", dpi=300)
     plt.close()
 
-
-    # ============================================================
-    # DONE
-    # ============================================================
 
     print()
     print("=" * 50)
