@@ -18,7 +18,7 @@ To get a local copy of this project up and running, open your terminal and run t
 
 ```bash
 # Clone the repository via HTTPS
-git clone 
+git clone https://github.com/lebomashatola/qml_histopathology.git
 ```
 
 **Model Requirement:**
